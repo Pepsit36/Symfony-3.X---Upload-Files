@@ -1,0 +1,4 @@
+services:
+#    dup_blog.example:
+#        class: DUP\BlogBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

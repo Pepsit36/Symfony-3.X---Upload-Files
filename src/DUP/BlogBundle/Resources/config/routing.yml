@@ -1,0 +1,4 @@
+dup_blog_post:
+    resource: "@DUPBlogBundle/Resources/config/routing/post.yml"
+    prefix:   /post
+
