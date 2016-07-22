@@ -41,11 +41,7 @@ class PostController extends Controller {
 
             $file = $post->getPoster()->getFile();
 
-            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
-
-            $file->move(
-                    $this->getParameter('images_directory'), $fileName
-            );
+            $fileName = $this->get('dup_blog.file_upload')->upload($file);
 
             $post->getPoster()->setName($fileName);
 
