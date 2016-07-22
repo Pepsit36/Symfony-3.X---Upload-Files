@@ -3,6 +3,7 @@
 namespace DUP\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use DUP\BlogBundle\Entity\Image;
 
 /**
  * Post
@@ -48,6 +49,13 @@ class Post {
      * @ORM\Column(name="content", type="text")
      */
     private $content;
+
+    /**
+     * @var Image
+     * 
+     * @ORM\OneToOne(targetEntity="\DUP\BlogBundle\Entity\Image")
+     */
+    private $poster;
 
     public function __construct() {
         $this->publishDateTime = new \DateTime();
@@ -148,6 +156,28 @@ class Post {
      */
     public function getContent() {
         return $this->content;
+    }
+
+    /**
+     * Set poster
+     *
+     * @param Image $poster
+     *
+     * @return Post
+     */
+    public function setPoster(Image $poster = null) {
+        $this->poster = $poster;
+
+        return $this;
+    }
+
+    /**
+     * Get poster
+     *
+     * @return Image
+     */
+    public function getPoster() {
+        return $this->poster;
     }
 
 }

@@ -10,3 +10,5 @@
 !var/sessions/.gitkeep
 /phpunit.xml
 nbproject/
+web/uploads/
+*.php~

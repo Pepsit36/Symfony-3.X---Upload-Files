@@ -38,7 +38,19 @@ class PostController extends Controller {
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $file = $post->getPoster()->getFile();
+
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+
+            $file->move(
+                    $this->getParameter('images_directory'), $fileName
+            );
+
+            $post->getPoster()->setName($fileName);
+
             $em->persist($post);
+            $em->persist($post->getPoster());
             $em->flush();
 
             return $this->redirectToRoute('post_show', array('id' => $post->getId()));

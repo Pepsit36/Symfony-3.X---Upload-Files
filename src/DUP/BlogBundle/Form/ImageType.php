@@ -5,9 +5,9 @@ namespace DUP\BlogBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use DUP\BlogBundle\Form\ImageType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
-class PostType extends AbstractType {
+class ImageType extends AbstractType {
 
     /**
      * @param FormBuilderInterface $builder
@@ -15,10 +15,7 @@ class PostType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('title')
-                ->add('auteur')
-                ->add('content')
-                ->add('poster', ImageType::class)
+                ->add('file', FileType::class)
         ;
     }
 
@@ -27,7 +24,7 @@ class PostType extends AbstractType {
      */
     public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'DUP\BlogBundle\Entity\Post'
+            'data_class' => 'DUP\BlogBundle\Entity\Image'
         ));
     }
 
